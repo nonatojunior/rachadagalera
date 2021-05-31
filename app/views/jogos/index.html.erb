@@ -15,9 +15,9 @@
       <tbody>
         <% @jogos.each do |jogo| %>
           <tr>
-            <td><%= link_to(("#{jogo.dia} <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe if !jogo.dia.nil?), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') %></td>
+            <td><%= link_to(("#{jogo.dia.strftime('%d/%m/%Y') if !jogo.nil? && !jogo.dia.nil?} <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe if !jogo.dia.nil?), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') %></td>
             <td><%= jogo.tipo_jogo %></td>
-            <td><%= link_to 'Add Jogadores', {controller: :jogos_jogadores, action: :new, dia: jogo.dia}, class: 'btn btn-default' %></td>
+            <td><%= link_to 'Add Jogadores', {controller: :jogos_jogadores, action: :new, dia: jogo.dia.strftime('%d/%m/%Y')}, class: 'btn btn-default' %></td>
             <% if !jogo.sumula.nil? %>
               <td><%= link_to 'Súmula', jogo.sumula, target: '_blank', class: 'btn btn-default' %></td>
             <% else %>
