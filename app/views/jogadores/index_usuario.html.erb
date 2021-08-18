@@ -15,7 +15,7 @@
 		    <% @jogadores.each do |jogador| %>
 		      <tr>
 		        <td><%= jogador.nome %></td>
-		        <td><%= (jogador.ativo == true ? "<i class='fa fa-check' aria-hidden='true'></i> Ativo" : "<i class='fa fa-times' aria-hidden='true'></i> Inativo").html_safe %></td>
+		        <td><%= (jogador.ativo == true ? "<i class='fa fa-check' aria-hidden='true' style='color: blue'></i> Ativo" : "<i class='fa fa-times' aria-hidden='true' style='color: red'></i> Inativo").html_safe %></td>
 		      </tr>
 		    <% end %>
 		  </tbody>

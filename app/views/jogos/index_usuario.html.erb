@@ -17,7 +17,7 @@
 		    <% @jogos.each do |jogo| %>
 		      <tr>
 		        <td><%= (contador += 1).to_s + 'º' %></td>
-		        <td><%= link_to(("#{jogo.dia.strftime('%d/%m/%Y')} <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe if !jogo.dia.nil?), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') %></td>
+		        <td><%= link_to(("#{jogo.dia.strftime('%d/%m/%Y')} (#{dia_semana(jogo.dia.strftime('%a'))}) <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe if !jogo.dia.nil?), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') %></td>
 		        <td><%= jogo.tipo_jogo %></td>
 		      </tr>
 		    <% end %>

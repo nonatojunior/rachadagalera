@@ -17,16 +17,16 @@
           <tr>
             <td><%= jogador.nome %></td>
             <td><%= (jogador.ativo == true ? "<i class='fa fa-check' aria-hidden='true'></i> Ativo" : "<i class='fa fa-times' aria-hidden='true'></i> Inativo").html_safe %></td>
-            <td><%= link_to 'Visualizar', jogador, class: 'btn btn-default' %></td>
-            <td><%= link_to 'Editar', edit_jogador_path(jogador), class: 'btn btn-default' %></td>
-            <td><%= link_to 'Deletar', jogador, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-default' %></td>
+            <td><%= link_to 'Visualizar', jogador, class: 'btn btn-sm btn-info' %></td>
+            <td><%= link_to 'Editar', edit_jogador_path(jogador), class: 'btn btn-sm btn-warning' %></td>
+            <td><%= link_to 'Deletar', jogador, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-sm btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <br>
-    <%= link_to 'Cadastrar Jogador', new_jogador_path, class: 'btn btn-default' %>
-    <%= link_to '<i class="fa fa-print" aria-hidden="true"></i> Gerar Ficha Jogadores'.html_safe, lista_jogadores_jogadores_path, class: 'btn btn-default', target: '_blank' %>
+    <%= link_to 'Cadastrar Jogador', new_jogador_path, class: 'btn btn-sm btn-success' %>
+    <%= link_to '<i class="fa fa-print" aria-hidden="true"></i> Gerar Ficha Jogadores'.html_safe, lista_jogadores_jogadores_path, class: 'btn btn-sm btn-default', target: '_blank' %>
   </div>
 </div>
 

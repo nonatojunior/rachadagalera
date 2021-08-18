@@ -15,23 +15,23 @@
       <tbody>
         <% @jogos.each do |jogo| %>
           <tr>
-            <td><%= link_to(("#{jogo.dia.strftime('%d/%m/%Y') if !jogo.nil? && !jogo.dia.nil?} <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe if !jogo.dia.nil?), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') %></td>
+            <td><%= link_to(("#{jogo.dia.strftime('%d/%m/%Y')} (#{dia_semana(jogo.dia.strftime('%a'))}) <i class='fa fa-external-link' aria-hidden='true'></i>".html_safe), {controller: :jogos_jogadores, action: :buscar_jogadores_jogo, jogo_id: jogo.id}, title: 'Ver detalhes do jogo.') if !jogo.nil? && !jogo.dia.nil? %></td>
             <td><%= jogo.tipo_jogo %></td>
-            <td><%= link_to 'Add Jogadores', {controller: :jogos_jogadores, action: :new, dia: jogo.dia.strftime('%d/%m/%Y')}, class: 'btn btn-default' %></td>
+            <td><%= link_to 'Add Jogadores', {controller: :jogos_jogadores, action: :new, dia: jogo.dia.strftime('%d/%m/%Y')}, class: 'btn btn-sm btn-primary' %></td>
             <% if !jogo.sumula.nil? %>
-              <td><%= link_to 'Súmula', jogo.sumula, target: '_blank', class: 'btn btn-default' %></td>
+              <td><%= link_to 'Súmula', jogo.sumula, target: '_blank', class: 'btn btn-sm btn-default' if !jogo.sumula.blank? %></td>
             <% else %>
               <td><%= link_to 'Add Súmula', abiri_modal_adicionar_sumula_jogos_path(jogo_id: jogo.id), {remote: true, class: 'btn btn-default'} %></td>
             <% end %>
-            <td><%= link_to 'Visualizar', jogo, class: 'btn btn-default' %></td>
-            <td><%= link_to 'Editar', edit_jogo_path(jogo), class: 'btn btn-default' %></td>
-            <td><%= link_to 'Deletar', jogo, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-default' %></td>
+            <td><%= link_to 'Visualizar', jogo, class: 'btn btn-sm btn-info' %></td>
+            <td><%= link_to 'Editar', edit_jogo_path(jogo), class: 'btn btn-sm btn-warning' %></td>
+            <td><%= link_to 'Deletar', jogo, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-sm btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <br>
-    <%= link_to 'Cadastrar Jogo', new_jogo_path, class: 'btn btn-default' %>
+    <%= link_to 'Cadastrar Jogo', new_jogo_path, class: 'btn btn-sm btn-success' %>
   </div>
 </div>
 

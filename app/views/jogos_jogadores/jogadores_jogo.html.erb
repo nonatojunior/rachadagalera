@@ -28,9 +28,9 @@
           <td class="text-center"><kbd><%= number_to_currency(@jogadores.map { |e| e.cota }.sum, unit: "R$", separator: ",", delimiter: "") + " reais" %></kbd></td>
           <td class="text-center">
             <kbd title="<%= @jogo.descricao_despesa %>"><%= number_to_currency(@jogo.despesa, unit: "R$", separator: ",", delimiter: "") + " reais" %></kbd>
-            <button type="button" class="btn btn-default" data-toggle="popover" title="Descrição da Despesa" data-content="<%=@jogo.descricao_despesa || "Não Informado" %>"><i class="fa fa-exclamation-circle"></i></button>
+            <button type="button" class="btn btn-xs btn-default" data-toggle="popover" title="Descrição da Despesa" data-content="<%=@jogo.descricao_despesa || "Não Informado" %>"><i class="fa fa-exclamation-circle text-info"></i></button>
           </td>
-          <td class="text-center"><%= link_to 'Súmula', @jogo.sumula, target: '_blank' if !@jogo.sumula.nil? %></td>
+          <td class="text-center"><%= link_to 'Súmula', @jogo.sumula, target: '_blank' if !@jogo.sumula.blank? %></td>
         </tr>
       </tbody>
     </table>
@@ -50,17 +50,17 @@
             <td><%= jogos_jogador.jogador.nome if !jogos_jogador.jogador.nil? && !jogos_jogador.jogador.nome.nil? %></td>
             <td><%= jogos_jogador.gol %></td>
             <td><%= number_to_currency(jogos_jogador.cota, unit: "R$", separator: ",", delimiter: "") %></td>
-            <td><%= link_to 'Editar', edit_jogos_jogador_path(jogos_jogador.id), class: 'btn btn-default' if usuario_signed_in? %></td>
-            <td><%= link_to 'Deletar', jogos_jogador, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-default' if usuario_signed_in? %></td>
+            <td><%= link_to 'Editar', edit_jogos_jogador_path(jogos_jogador.id), class: 'btn btn-sm btn-warning' if usuario_signed_in? %></td>
+            <td><%= link_to 'Deletar', jogos_jogador, method: :delete, data: { confirm: 'Deseja deletar?' }, class: 'btn btn-sm btn-danger' if usuario_signed_in? %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <br>
     <% if usuario_signed_in? %>
-    	<%= link_to 'Voltar', jogos_path, class: 'btn btn-default' %>
+    	<%= link_to 'Voltar', jogos_path, class: 'btn btn-sm btn-default' %>
     <% else %>
-    	<%= link_to 'Voltar', index_usuario_jogos_path, class: 'btn btn-default' %>
+    	<%= link_to 'Voltar', index_usuario_jogos_path, class: 'btn btn-sm btn-default' %>
     <% end %>
   </div>
 </div>

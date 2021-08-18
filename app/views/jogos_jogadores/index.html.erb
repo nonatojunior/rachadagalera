@@ -21,14 +21,14 @@
             <td><%= jogos_jogador.jogador.nome if !jogos_jogador.jogador.nil? && !jogos_jogador.jogador.nome.nil? %></td>
             <td><%= jogos_jogador.gol %></td>
             <td><%= number_to_currency(jogos_jogador.cota, unit: "R$", separator: ",", delimiter: "") %></td>
-            <td><%= link_to 'Visualizar', jogos_jogador, class: 'btn btn-default' %></td>
-            <td><%= link_to 'Editar', edit_jogos_jogador_path(jogos_jogador), class: 'btn btn-default' %></td>
-            <td><%= link_to 'Deletar', jogos_jogador, method: :delete, data: { confirm: 'Deseja deletrar?' }, class: 'btn btn-default' %></td>
+            <td><%= link_to 'Visualizar', jogos_jogador, class: 'btn btn-sm btn-default' %></td>
+            <td><%= link_to 'Editar', edit_jogos_jogador_path(jogos_jogador), class: 'btn btn-sm btn-default' %></td>
+            <td><%= link_to 'Deletar', jogos_jogador, method: :delete, data: { confirm: 'Deseja deletrar?' }, class: 'btn btn-sm btn-default' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <br>
-    <%= link_to 'Cadastrar Informações do Jogador no Jogo', new_jogos_jogador_path, class: 'btn btn-default' %>
+    <%= link_to 'Cadastrar Informações do Jogador no Jogo', new_jogos_jogador_path, class: 'btn btn-sm btn-default' %>
   </div>
 </div>

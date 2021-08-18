@@ -11,7 +11,7 @@
 			<tr>
 				<td><%= jogador.jogador.nome if !jogador.jogador_id.nil? %></td>
 				<td><%= jogador.gol if !jogador.gol.nil? %></td>
-				<td><%= jogador.cota if !jogador.cota.nil? %></td>
+				<td><%= number_to_currency(jogador.cota) if !jogador.cota.nil? %></td>
 			</tr>
 		<% end %>
 	</tbody>
