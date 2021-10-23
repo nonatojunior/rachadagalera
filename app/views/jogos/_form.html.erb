@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-3">
       <%= f.label :dia %><br>
-      <%= f.text_field :dia, value: @jogo.try(:dia).strftime('%d-%m-%Y') || Time.now.strftime('%d-%m-%Y'), class: 'form-control', required: true %>
+      <%= f.text_field :dia, value: (@jogo.new_record? ? '' : @jogo.try(:dia).strftime('%d-%m-%Y')), class: 'form-control', required: true %>
     </div>
   </div>
   <br>
