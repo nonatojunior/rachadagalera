@@ -72,6 +72,19 @@ class JogadoresController < ApplicationController
     send_file lista, disposition: 'inline'
   end
 
+  def atualizar_status
+    jogador = Jogador.find(params[:id])
+    if jogador.ativo?
+      jogador.ativo = false
+    else
+      jogador.ativo = true
+    end
+    jogador.save
+
+    redirect_to jogadores_path
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jogador

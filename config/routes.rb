@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get :index_usuario
       get :lista_jogadores
+      get :atualizar_status
     end
   end
 
