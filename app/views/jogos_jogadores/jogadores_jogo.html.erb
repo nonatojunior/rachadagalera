@@ -25,7 +25,7 @@
         <tr>
           <td class="text-center"><kbd><%= @jogadores.count.to_s + " jogadores" %></kbd></td>
           <td class="text-center"><kbd><%= @jogadores.map { |e| e.gol }.sum.to_s + " gols" %></kbd></td>
-          <td class="text-center"><kbd><%= number_to_currency(@jogadores.map { |e| e.cota }.sum, unit: "R$", separator: ",", delimiter: "") + " reais" %></kbd></td>
+          <td class="text-center"><kbd><%= number_to_currency(@jogadores.map { |e| e.try(:cota) }.sum, unit: "R$", separator: ",", delimiter: "") + " reais" %></kbd></td>
           <td class="text-center">
             <kbd title="<%= @jogo.descricao_despesa %>"><%= number_to_currency(@jogo.despesa, unit: "R$", separator: ",", delimiter: "") + " reais" %></kbd>
             <button type="button" class="btn btn-xs btn-default" data-toggle="popover" title="Descrição da Despesa" data-content="<%=@jogo.descricao_despesa || "Não Informado" %>"><i class="fa fa-exclamation-circle text-info"></i></button>
