@@ -33,7 +33,8 @@ class JogosController < ApplicationController
 
     respond_to do |format|
       if @jogo.save
-        format.html { redirect_to @jogo, notice: 'Jogo was successfully created.' }
+        # format.html { redirect_to @jogo, notice: 'Jogo was successfully created.' }
+        format.html { redirect_to new_jogos_jogador_path(dia: @jogo.dia), notice: 'Jogo was successfully created.' }
         format.json { render :show, status: :created, location: @jogo }
       else
         format.html { render :new }
