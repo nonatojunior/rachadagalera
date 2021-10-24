@@ -16,10 +16,13 @@ class JogosJogadoresController < ApplicationController
   # GET /jogos_jogadores/new
   def new
     @jogos_jogador = JogosJogador.new
+    @lista_jogadores_jogo = JogosJogador.where('jogo_id = ?', Jogo.find_by_dia(params[:dia].to_date).id)
   end
 
   # GET /jogos_jogadores/1/edit
   def edit
+    @jogo = JogosJogador.find(params[:id]).jogo.id
+    @lista_jogadores_jogo = JogosJogador.where('jogo_id = ?', @jogo)
   end
 
   # POST /jogos_jogadores
@@ -54,8 +57,12 @@ class JogosJogadoresController < ApplicationController
   # DELETE /jogos_jogadores/1
   # DELETE /jogos_jogadores/1.json
   def destroy
+    @jogo = JogosJogador.find(params[:id]).jogo.dia
+    # raise @jogo.inspect
     @jogos_jogador.destroy
-    redirect_to controller: :jogos, action: :index
+    redirect_to controller: :jogos_jogadores, action: :new, dia: @jogo
+    # redirect_to new_jogos_jogador_path, dia: @jogo
+    # redirect_to controller: :jogos, action: :index
   end
 
   def buscar_jogadores_jogo

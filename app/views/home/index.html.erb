@@ -59,16 +59,16 @@
   <div class="panel-body text-center">
     <div class="row">
         <div class="col-md-2">
-            <h4><b>Crédito</b></h4>
-            <h3 style="color: green;"><%= number_to_currency(Jogo.credito) || 0 %></h3>
+            <h4><b>Arrecadado</b></h4>
+            <h3><%= number_to_currency(Jogo.credito) || 0 %></h3>
         </div>
         <div class="col-md-2">
             <br>
             <h3><b>-</b></h3>
         </div>
         <div class="col-md-2">
-            <h4><b>Débito</b></h4>
-            <h3 style="color: red;"><%= number_to_currency(Jogo.debito) || 0 %></h3>
+            <h4><b>Despesas</b></h4>
+            <h3><%= number_to_currency(Jogo.debito) || 0 %></h3>
         </div>
         <div class="col-md-2">
             <br>
@@ -76,7 +76,11 @@
         </div>
         <div class="col-md-2">
             <h4><b>Saldo</b></h4>
-            <h3><%= number_to_currency(Jogo.saldo) || 0 %></h3>
+            <% if Jogo.saldo > 0 %>
+                <h3 style="color: green;"><%= number_to_currency(Jogo.saldo) || 0 %></h3>
+            <% else %>
+                <h3 style="color: red;"><%= number_to_currency(Jogo.saldo) || 0 %></h3>
+            <% end %>
         </div>
     </div>
   </div>

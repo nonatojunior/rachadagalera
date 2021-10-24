@@ -19,15 +19,15 @@
   <div class="row">
     <div class="col-md-3">
       <%= f.label :jogador_id %><br>
-      <%= f.select(:jogador_id, Jogador.all.order(:nome).collect {|e| [e.nome, e.id]}, {:prompt => 'Selecione'}, {:class => 'form-control'}) %>
+      <%= f.select(:jogador_id, Jogador.all.order(:nome).collect {|e| [e.nome, e.id]}, {:prompt => 'Selecione'}, {:class => 'form-control', required: true}) %>
     </div>
     <div class="col-md-2">
       <%= f.label :gol, "Qtdd Gols" %><br>
-      <%= f.number_field :gol, value: @jogos_jogador.gol || "0", in: (0..100), class: 'form-control' %>
+      <%= f.number_field :gol, value: @jogos_jogador.gol || "0", in: (0..100), class: 'form-control', required: true %>
     </div>
     <div class="col-md-2">
       <%= f.label :cota, "Cota (R$)" %><br>
-      <%= f.text_field :cota, value: @jogos_jogador.cota || "0", class: 'form-control' %>
+      <%= f.text_field :cota, value: @jogos_jogador.cota || "0", class: 'form-control', required: true %>
     </div>
   </div>
   <br>
@@ -40,3 +40,7 @@
 <div id="mensagem"></div>
 <hr>
 <div id="jogadores"></div>
+
+<script>
+  $('#jogadores').html("<%= j render :partial => '/jogos_jogadores/jogadores_jogo', :locals => {lista_jogadores_jogo: @lista_jogadores_jogo} %>");
+</script>
