@@ -24,8 +24,7 @@ class Jogador < ActiveRecord::Base
 				table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 10, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
 			end
 			data.pop()
-			quantidade_linhas_em_branco = 30 - contador
-			quantidade_linhas_em_branco.times do
+			5.times do
 				data << ["#{contador += 1}º", "", "", ""]
 			end
 			table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 10, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
