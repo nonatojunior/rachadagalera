@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Sortear Time</h3>
+  </div>
+  <% if !@lista_jogadores %>
+    <div class="panel-body">
+      <%= form_tag('sortear_time') do %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag "Quantidade de jogadores por time", nil %>
+            <%= number_field_tag :quantidade_jogadores_time, 5, {class: 'form-control'} %>
+          </div>
+        </div>
+        <br>
+        <% @jogadores.each do |jogador| %>
+          <%= check_box_tag "lista_jogadores[]", jogador.id, nil, id: "checkbox_id_#{jogador.id}", class: "jogador" %>
+          <%= label_tag "#{jogador.nome}", nil, for: "checkbox_id_#{jogador.id}" %>
+          <br>
+        <% end %>
+        <%= submit_tag "Sortear", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="panel-body">
+      <% @lista_jogadores.each_with_index do |array_times, index| %>
+      <h3>Time: <%= index + 1 %></h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width="10px">Time</th>
+              <th>Jogador</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% array_times.each_with_index do |array_jogadores, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= Jogador.find(array_jogadores[:jogador]).nome %></td>
+              </tr>
+            <% end %>
+          <tbody>
+        </table>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+
+</script>

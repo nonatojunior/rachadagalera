@@ -79,6 +79,49 @@ class JogosJogadoresController < ApplicationController
     @artilheiros = JogosJogador.artilharia
   end
 
+  def sortear_time
+    @jogadores = Jogador.order(:nome).where(ativo: true)
+    if params[:commit] == "Sortear" && !params[:lista_jogadores].nil?
+      jogadores = params[:lista_jogadores]
+      quantidade_jogadores_time = params[:quantidade_jogadores_time].to_i
+      quantidade_times = (jogadores.length / quantidade_jogadores_time)
+      
+      # time = 0
+      # @lista_jogadores = []
+      # quantidade_times.times do |index_time|
+      #   time = index_time + 1
+      #   quantidade_jogadores_time.times do |index_jogador|
+      #     jogador = jogadores[rand(jogadores.length)]
+      #     @lista_jogadores.push({time: time, jogador: jogador})
+      #     jogadores.delete(jogador)
+      #   end
+      # end
+      # jogadores.each do |jogador_sem_time|
+      #   @lista_jogadores.push({time: (time+1), jogador: jogador_sem_time})
+      # end
+
+      time = 0
+      @lista_jogadores = []
+      quantidade_times.times do |index_time|
+        time = index_time + 1
+        array_jogadores_com_time = []
+        quantidade_jogadores_time.times do |index_jogador|
+          jogador = jogadores[rand(jogadores.length)]
+          array_jogadores_com_time.push({time: time, jogador: jogador})
+          jogadores.delete(jogador)
+        end
+        @lista_jogadores.push(array_jogadores_com_time)
+      end
+      array_jogadores_sem_time = []
+      jogadores.each do |jogador_sem_time|
+        array_jogadores_sem_time.push({time: (time+1), jogador: jogador_sem_time})
+      end
+      @lista_jogadores << array_jogadores_sem_time
+    end
+    # raise @lista_jogadores.inspect
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jogos_jogador

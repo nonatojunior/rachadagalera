@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get :buscar_jogadores_jogo
       get :artilharia
+      match :sortear_time, via: [:get, :post]
     end
   end
   resources :jogadores do

@@ -17,17 +17,17 @@ class Jogador < ActiveRecord::Base
 			text "Jogo do Dia  ___/___/#{Time.now.year}", :align => :center
 			move_down 10
 			data = [ ["Qtdd", "Jogador", "R$ Cota", "Gols"] ]
-			table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 12, :width => 15, :height => 20, :background_color => "BEBEBE" }, :position => :center, :column_widths => [40, 350, 65, 65])
+			table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 20, :width => 15, :height => 20, :background_color => "BEBEBE" }, :position => :center, :column_widths => [40, 350, 65, 65])
 			contador = 0
 			Jogador.where(ativo: true).order('nome ASC').each do |jogador|
 				data = [ ["#{contador += 1}º", "#{jogador.nome}", "", ""] ]
-				table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 10, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
+				table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 20, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
 			end
 			data.pop()
 			5.times do
 				data << ["#{contador += 1}º", "", "", ""]
 			end
-			table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 10, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
+			table(data, :cell_style => { :overflow => :shrink_to_fit, :size => 20, :width => 15, :height => 20 }, :position => :center, :column_widths => [40, 350, 65, 65])
 			move_down 10
 			text "Total arrecadado R$ ____________"
 			text "Total despesas R$ ____________"
