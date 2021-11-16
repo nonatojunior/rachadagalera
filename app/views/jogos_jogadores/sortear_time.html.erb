@@ -22,6 +22,7 @@
     </div>
   <% else %>
     <div class="panel-body">
+    <% raise @lista_jogadores.inspect %>
       <% @lista_jogadores.each_with_index do |array_times, index| %>
       <h3>Time: <%= index + 1 %></h3>
         <table class="table table-hover">
@@ -44,8 +45,3 @@
     </div>
   <% end %>
 </div>
-
-
-<script>
-
-</script>

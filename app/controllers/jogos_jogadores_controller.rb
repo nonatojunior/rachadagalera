@@ -97,11 +97,13 @@ class JogosJogadoresController < ApplicationController
         end
         @lista_jogadores.push(array_jogadores_com_time)
       end
-      array_jogadores_sem_time = []
-      jogadores.each do |jogador_sem_time|
-        array_jogadores_sem_time.push({time: (time+1), jogador: jogador_sem_time})
+      if !jogadores.blank?
+        array_jogadores_sem_time = []
+        jogadores.each do |jogador_sem_time|
+          array_jogadores_sem_time.push({time: (time+1), jogador: jogador_sem_time})
+        end
+        @lista_jogadores << array_jogadores_sem_time
       end
-      @lista_jogadores << array_jogadores_sem_time
     end
   end
   
