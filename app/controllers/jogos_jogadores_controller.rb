@@ -85,21 +85,6 @@ class JogosJogadoresController < ApplicationController
       jogadores = params[:lista_jogadores]
       quantidade_jogadores_time = params[:quantidade_jogadores_time].to_i
       quantidade_times = (jogadores.length / quantidade_jogadores_time)
-      
-      # time = 0
-      # @lista_jogadores = []
-      # quantidade_times.times do |index_time|
-      #   time = index_time + 1
-      #   quantidade_jogadores_time.times do |index_jogador|
-      #     jogador = jogadores[rand(jogadores.length)]
-      #     @lista_jogadores.push({time: time, jogador: jogador})
-      #     jogadores.delete(jogador)
-      #   end
-      # end
-      # jogadores.each do |jogador_sem_time|
-      #   @lista_jogadores.push({time: (time+1), jogador: jogador_sem_time})
-      # end
-
       time = 0
       @lista_jogadores = []
       quantidade_times.times do |index_time|
@@ -118,7 +103,6 @@ class JogosJogadoresController < ApplicationController
       end
       @lista_jogadores << array_jogadores_sem_time
     end
-    # raise @lista_jogadores.inspect
   end
   
 
